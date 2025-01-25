@@ -1,10 +1,14 @@
-import express from "express"
-const app = express()
-const port = 3000
+import express from "express";
+import { MovieRoutes } from "./modules/movies/movie.route";
+const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello  ')
-})
+// use parser
+app.use(express.json());
 
+app.use("/api/movies", MovieRoutes);
 
-export default app
+app.get("/", (req, res) => {
+  res.send("Hello  world");
+});
+
+export default app;
